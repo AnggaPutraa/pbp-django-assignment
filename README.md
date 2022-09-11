@@ -14,7 +14,8 @@ Mengimplementasikan konsep Model-View-Template serta beberapa  hal yang telah di
 ### Jawaban dari pertanyaan yang diajukan pada Tugas 2
 
 1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html;
-   ![](assets\images\BaganDjango.png)
+
+   ![](assets\images\preview_bagan_client_django.png)
 
 2. Jelaskan kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
     
