@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "Thor: Love and Thunder",
+            "rating": 4,
+            "release_date": "July 6, 2022",
+            "review": "Top 10 greatest Marvel Studios movie of all time. "
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 2,
+        "fields": {
+            "watched": true,
+            "title": "One Day We'll Talk About Today",
+            "rating": 5,
+            "release_date": "January 2, 2020",
+            "review": "It not only was a heart-warming tale but also a genuine and relatable film. With a simple premise and stellar performances, I would say that this is a film not to be overlooked"
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 3,
+        "fields": {
+            "watched": true,
+            "title": "Peninsula",
+            "rating": 2,
+            "release_date": "October 16, 2020",
+            "review": "Not as good as the first one but at least set in the same universe."
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "Check the Store Next Door",
+            "rating": 5,
+            "release_date": "December 20, 2016",
+            "review": "A story about the ups and downs of each family members, each character can resonate with the audience in some way."
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 5,
+        "fields": {
+            "watched": true,
+            "title": "Top Gun: Maverick",
+            "rating": 4,
+            "release_date": "May 27, 2022",
+            "review": "It takes you on an emotional nostalgia filled thrill ride that will have you on the edge of your seat."
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 6,
+        "fields": {
+            "watched": true,
+            "title": "Friend Zone",
+            "rating": 3,
+            "release_date": "March 20, 2019",
+            "review": "Laugh and shed a tears in one movie with a such great chemistry between the characters."
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Hotel Mumbai",
+            "rating": 4,
+            "release_date": "April 6, 2019",
+            "review": "Based on true events of Terrorist attack on Majestic Hotel Taj in Mumbai. This movie proves that Indians treat guests as God. Many people who died in the hotel were the hotel staff who stayed there to protect the guests."
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 8,
+        "fields": {
+            "watched": false,
+            "title": "Minions: The Rise of Gru",
+            "rating": 3,
+            "release_date": "June 28, 2022",
+            "review": "This movie was truly encompassing of all emotions, along with profoundly polished animation, near flawless lip-syncing, and subtle and powerful moments of comedy"
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "Logan",
+            "rating": 5,
+            "release_date": "March 1, 2017",
+            "review": "The character which we identify and about whom we cara, its not just great for a superhero movie, its a great movie for any genre."
+        }
+    },
+    {
+        "model": "mywatchlist.watchitem",
+        "pk": 10,
+        "fields": {
+            "watched": false,
+            "title": "Miracle in Cell No. 7",
+            "rating": 4,
+            "release_date": "September 8, 2022",
+            "review": "A heart-warming story about the relationship between a 6-year old girl and her mentally challenged father whose accused and convicted of a crime he didn't commit. "
+        }
+    }
+]

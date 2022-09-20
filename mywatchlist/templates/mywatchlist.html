@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Name : {{ name }}</h3>
+
+<h3>Student Id : {{ student_id }}</h3>
+
+<table cellspacing = "16">
+  <tr>
+    <th align="left">Ttile</th>
+    <th align="left">Rating</th>
+    <th align="left">Is Watched</th>
+    <th align="left">Release Date</th>
+    <th align="left">Reveiw</th>
+  </tr>
+  {% for watchItem in watchList %}
+    <tr>
+      <td>{{watchItem.title}}</td>
+      <td>{{watchItem.rating}}</td>
+      {% if watchItem.watched %}
+        <td>ditonton</td>
+      {% else %}
+        <td>belum ditonton</td>
+      {% endif %}
+      <td>{{watchItem.release_date}}</td>
+      <td>{{watchItem.review}}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<h3>{{ status }}</h3>
+
+{% endblock content %}
