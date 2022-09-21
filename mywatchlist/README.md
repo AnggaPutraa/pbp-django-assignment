@@ -95,7 +95,7 @@ satu sama lain.
 ## Implementasi poin 1-3
 1. Membuat suatu aplikasi baru bernama `mywatchlist` dengan cara menjalankan perintah ini ke terminal
     ```bash
-    python mamange.py startapp mywatchlist
+    python manage.py startapp mywatchlist
     ```
 
 2. Menambahkan aplikasi `mywatchlist` ke **INSTALLED_APPS** pada `settings.py`
@@ -116,15 +116,15 @@ satu sama lain.
 
 4. Jalankan perintah ini ke terminal
     ```bash
-    python mamange.py makeimingrations
-    python mamange.py migrate
+    python manage.py makemingrations
+    python manage.py migrate
     ```
 
 5. Buat sebuah folder bernama `fixture` di dalam folder `mywatchlist`, lalu tambahkan data yang berupa file json dengan nama `initial_mywatchlist_data.json`
 
 6. Selanjutnya, jalankan perintah ini ke terminal
     ```bash
-    python mamange.py loaddata initial_mywatchlist_data.json
+    python manage.py loaddata initial_mywatchlist_data.json
     ```
 
 7. Pada bagian `views.py` yang berada `mywatchlist` buatlah fungsi-fungsi yang dibutuhkan yang diantaraya adalah
