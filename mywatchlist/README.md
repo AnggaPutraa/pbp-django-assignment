@@ -164,3 +164,9 @@ satu sama lain.
     ```
 
 ## Postman
+
+### HTML Request via postman
+
+### XML Request via postman
+
+### JSON Request via postman
