@@ -15,7 +15,7 @@ class TestViews(TestCase):
             'mywatchlist:show_my_watchlist_xml'
         )
 
-    def test_show_my_wish_list(self):
+    def test_show_mywatchlist_as_html(self):
         response = self.client.get(
             self.urlToViewHtml
         )
@@ -28,7 +28,7 @@ class TestViews(TestCase):
             'mywatchlist.html'
         )
 
-    def test_show_my_wish_list_as_json(self):
+    def test_show_mywatchlist_as_json(self):
         response = self.client.get(
             self.urlToViewJson
         )
@@ -37,7 +37,7 @@ class TestViews(TestCase):
             200
         )
 
-    def test_show_my_wish_list_as_xml(self):
+    def test_show_mywatchlist_as_xml(self):
         response = self.client.get(
             self.urlToViewXML
         )

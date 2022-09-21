@@ -102,8 +102,8 @@ satu sama lain.
     ```bash
     INSTALLED_APPS = [
         .....,
+        'mywatchlist',
         .....,
-        'wishlist',
     ]
     ```
 

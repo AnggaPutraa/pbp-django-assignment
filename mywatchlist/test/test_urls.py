@@ -15,7 +15,7 @@ class TestUrls(TestCase):
             'mywatchlist:show_my_watchlist_xml'
         )
 
-    def test_my_wish_list_urls_resolve(self):
+    def test_mywatchlist_html_resolve(self):
         self.assertEqual(
             resolve(
                 self.urlToViewHtml
@@ -23,7 +23,7 @@ class TestUrls(TestCase):
             show_my_watch_list
         )
         
-    def test_my_wish_list_xml_resolve(self):
+    def test_mywatchlist_json_resolve(self):
         self.assertEqual(
             resolve(
                 self.urlToViewJson
@@ -31,7 +31,7 @@ class TestUrls(TestCase):
             show_my_watchlist_json
         )
 
-    def test_my_wish_list_json_resolve(self):
+    def test_mywatchlist_xml_resolve(self):
         self.assertEqual(
             resolve(
                 self.urlToViewXML
