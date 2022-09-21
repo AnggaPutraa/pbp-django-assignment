@@ -6,7 +6,7 @@ class TestViews(TestCase):
     def setUp(self):
         self.client = Client();
         self.urlToViewHtml = reverse(
-            'mywatchlist:show_my_watch_list'
+            'mywatchlist:show_my_wishlist_html'
         )
         self.urlToViewJson = reverse(
             'mywatchlist:show_my_watchlist_json'
