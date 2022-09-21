@@ -165,8 +165,15 @@ satu sama lain.
 
 ## Postman
 
-### HTML Request via postman
+### HTML request via postman
 
-### XML Request via postman
+![](https://raw.githubusercontent.com/AnggaPutraa/pbp-tugas-2/main/assets/images/assignment-2/postman_html_req.png)
 
-### JSON Request via postman
+### XML request via postman
+
+![](https://raw.githubusercontent.com/AnggaPutraa/pbp-tugas-2/main/assets/images/assignment-2/postman_xml_req.png)
+
+### JSON request via postman
+
+![](https://raw.githubusercontent.com/AnggaPutraa/pbp-tugas-2/main/assets/images/assignment-2/postman_json_req.png)
+
