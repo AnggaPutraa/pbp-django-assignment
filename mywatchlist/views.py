@@ -4,25 +4,10 @@ from django.core import serializers
 from mywatchlist.models import WatchItem
 
 def show_my_watch_list(request):
-    obj = WatchItem.objects
-    data = obj.all()
-    status = obj.filter(
-        watched = True
-    ).count() > obj.filter(
-        watched = False
-    ).count()
-
+    
     return render(
         request,
-        'mywatchlist.html',
-        {
-            'name' : 'Angga',
-            'student_id': 2106650065,
-            'status': 
-                'Selamat, kamu sudah banyak menonton!' if status 
-                else 'Wah, kamu masih sedikit menonton!',
-            'watchList' : data,
-        }
+        'main_mywatchlist.html',
     )
 
 def show_my_wishlist_html(request):
