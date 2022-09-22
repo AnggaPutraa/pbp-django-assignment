@@ -177,3 +177,5 @@ satu sama lain.
 
 ![](https://raw.githubusercontent.com/AnggaPutraa/pbp-tugas-2/main/assets/images/assignment-2/postman_json_req.png)
 
+## Link aplikasi
+Link untuk menuju aplikasi yang telah dikerjakan dapat diakses [di sini](https://pbp-tugas-2-angga.herokuapp.com/mywatchlist/).
