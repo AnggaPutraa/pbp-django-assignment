@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content">
+  <div class="wrapper">
+    <div class="todo-header">
+      <h2 class="primary-heading">{{ username }} Todo's</h2>
+      <div class="make-a-gap">
+        <a href="{% url 'todolist:logout' %}", class="custom-alert-button">Logout</a>
+        <a href="{% url 'todolist:create_task' %}", class="custom-primary-button">Create Task</a>
+      </div>
+    </div>
+    <table class="content-table">
+      <thead>
+        <tr>
+          <th align="left">Created On</th>
+          <th align="left">Title</th>
+          <th align="left">Description</th>
+          <th align="left">Status</th>
+          <th align="left">Actions</th>
+        </tr>
+      </thead>
+     <tbody>
+      {% for todo in todos %}
+        <tr>
+          <td>{{ todo.date }}</td>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.description }}</td>
+          {% if todo.is_finished %}
+            <td>Done</td>
+          {% else %}
+            <td>In Progress</td>
+          {% endif %}
+          <td>
+            <a href="{% url 'todolist:update_task' todo.title %}", class="custom-good-button">Finished</a>
+            <a href="{% url 'todolist:delete_task' todo.title %}", class="custom-delete-button">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+    <h5 style="text-align: center;">last accessed on {{ last_login }}</h5>
+  </div>
+</div>
+{% endblock content %}
