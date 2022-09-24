@@ -1,4 +1,3 @@
-from tkinter import N
 from django.urls import path
 from todolist.views import  regist_user, login_user, logout_user, show_todos, create_task, update_task, delete_task
 
