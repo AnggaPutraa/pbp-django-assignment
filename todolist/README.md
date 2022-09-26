@@ -17,3 +17,6 @@ Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 ### Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada database, hingga munculnya data yang telah disimpan pada template HTML.
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+### Link aplikasi
+Link untuk menuju aplikasi yang telah dikerjakan dapat diakses [di sini](https://pbp-tugas-2-angga.herokuapp.com/todolist/).

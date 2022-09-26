@@ -32,7 +32,7 @@
             <td>In Progress</td>
           {% endif %}
           <td>
-            <a href="{% url 'todolist:update_task' todo.pk %}", class="custom-good-button">Finished</a>
+            <a href="{% url 'todolist:update_task' todo.pk %}", class="custom-good-button">Toggle</a>
             <a href="{% url 'todolist:delete_task' todo.pk %}", class="custom-delete-button">Delete</a>
           </td>
         </tr>
