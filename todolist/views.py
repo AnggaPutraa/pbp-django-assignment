@@ -115,21 +115,23 @@ def create_task(request):
         }
     )
 
-def update_task(request, task_titile):
+@login_required(login_url='/todolist/login/')
+def update_task(request, key):
     task = TaskItem.objects.get(
         user = request.user,
-        title = task_titile
+        pk = key
     )
-    task.is_finished = True
+    task.is_finished = not task.is_finished
     task.save()
     return redirect(
         'todolist:show_todos'
     )
 
-def delete_task(request, task_titile):
+@login_required(login_url='/todolist/login/')
+def delete_task(request, key):
     task = TaskItem.objects.get(
         user = request.user,
-        title = task_titile
+        pk = key
     )
     task.delete()
 
