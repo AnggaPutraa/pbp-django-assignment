@@ -1,4 +1,5 @@
 import datetime
+from tkinter import NO
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -6,28 +7,49 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from todolist.forms import TaskForm
 from todolist.models import TaskItem
 
 def regist_user(request):
-    form = UserCreationForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, 
-                'Akun telah berhasil dibuat!'
+        username = request.POST.get('username')
+        password_1 = request.POST.get('password1')
+        password_2 = request.POST.get('password2')
+        is_user_already_exist = User.objects.filter(username=username).exists()
+        if password_1 == password_2 and not is_user_already_exist:
+            user = User.objects.create_user(
+                username=username,
+                password=password_2
             )
-            return redirect('todolist:login')
-    
+            if user is not None:
+                user.save()
+                return redirect('todolist:login')
+            else:
+                messages.info(
+                    request,
+                    'Ops! something went wrong'
+                )
+        elif password_1 != password_2:
+            messages.info(
+                request,
+                'Passowrd doesnt match'
+            )
+        elif is_user_already_exist:
+            messages.info(
+                request,
+                'User already exist'
+            )
+        else:
+            messages.info(
+                request,
+                'Ops! something went wrong'
+            )
+
     return render(
         request,
         'regist.html',
-        {
-            'form':form
-        }
+        {}
     )
 
 def login_user(request):
@@ -100,7 +122,7 @@ def create_task(request):
             title=title, 
             description=description
         )
-        return redirect('todolist:show_todos');
+        return redirect('todolist:show_todos')
     
     return render(
         request,
