@@ -61,7 +61,6 @@ def login_user(request):
             username = username,
             password = password
         )
-
         if user is not None:
             login(request, user)
             response = HttpResponseRedirect(
