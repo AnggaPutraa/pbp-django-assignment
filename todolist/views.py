@@ -91,28 +91,21 @@ def show_todos(request):
 
 @login_required(login_url='/todolist/login/')
 def create_task(request):
-    form = TaskForm()
     if request.method == 'POST':
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            form_listener = form.save(commit=False)
-            form_listener.user = request.user
-            form_listener.save()
-            return HttpResponseRedirect(
-                reverse('todolist:show_todos')
-            )
-        else:
-            messages.info(
-                request,
-                'Terjadi kesalahan saat menyimpan data!'
-            )
+        user = request.user
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        TaskItem.objects.create(
+            user=user, 
+            title=title, 
+            description=description
+        )
+        return redirect('todolist:show_todos');
     
     return render(
         request,
         'create_task.html',
-        {
-            'form': form
-        }
+        {}
     )
 
 @login_required(login_url='/todolist/login/')
