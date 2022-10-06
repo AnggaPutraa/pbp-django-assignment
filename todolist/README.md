@@ -1,4 +1,5 @@
 
+
 # PBP Assignment 4 - Implementing Forms and Authentication Using Django
 
 Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh 
@@ -10,79 +11,29 @@ Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 
 **Kelas : C**
 
-## Apa kegunaan `{% csrf_token %}` pada elemen `<form>?` Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen <form>?
-`{% csrf_token %}` token berfungsi untuk menjamin keamanan user dan site.  Apabila tidak mencantumkan syntax tersebut, kedua aspek penting yaitu user dan site akan rawan terkena serangan dari pihak eksternal, serta Django sendiri tidak mengizinkan serta memverifikasi akses ke dalam route yang menggunakan form pada website tanpa adanya `{% csrf_token %}`.
+## Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
+1. Inline CSS diimplementasikan pada elemen HTML, yang mana pengguaannya cukup efisien apabila hanya melakukan styling satu atau dua elemen yang berbeda. Namun, penambahan styling pada html secara langsung membuat file html sulit untuk dibaca. 
+2. Internal CSS diimplementasikan secara internal di dalam file .html pada section `<style></style>`, namun terpisah dari tag HTML. Terdapat fitur yang tidak ada pada inline CSS seperti Id selector & class. Namun, implementasi tersebut akan memakan waktu yang cukup lama apabila terdapat banyak file .html
+3. External CSS diimplementasikan secara external di luar file .html yang biasanya diaplikasikan ke file .css yang nantinya akan di link ke file .html. Implementasi ini sangat berguna apabila bekerja pada website besar, di mana styling hanya cukup dilakukan di satu halaman untuk beberapa element/komponen yang sama. Namun, terkadang ada kemungkinan halaman .html tidak akan disajikan dengan baik sebelum external CSS sepenuhnya dimuat.
 
-## Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan generator seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual.
-Bisa, hal ini dapat dilakukan dengan membuat form sebagai suatu object dengan membuat input fields secara manual dalam syntax HTML dan membuat sebuah trigger untuk mensubmit POST request pada setiap text controller yang berisi value. Pembuatan form secara manual memiliki keuntungan tersendiri, di mana hal ini bergantung dengan keinginan developer dalam menampilkan interfacenya.
+## Jelaskan tag HTML5 yang kamu ketahui.
+1. `<h1></h1>` - `<h6></h6>`, untuk membuat heading
+2. `<p></p>`, untuk membuat element teks yang membentuk suatu paragraf
+3. `<img src=''/>`, untuk menambahkan/link gambar ke dalam project
+4. `<br></br>`, untuk memberi line break
+5. `<a><a/>`, untuk membuat suatu link yang dapat melakukan navigasi ke suatu route
+6. `<form></form>`, untuk membuat element form
 
-## Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada database, hingga munculnya data yang telah disimpan pada template HTML.
-Ketika user menekan tombol login, submit, atau save, browser meresponse dengan mengirimkan POST request ke dalam server. event POST request tersebut akan melakukan perubahan pada server atau database. Setelah menjalankan event tersebut, Django views akan merespon kembali dengan mengembalikan atau memproses data yang diinginkan dengan melakukan user redirect  ke views sebelumnya yang mana hal ini akan mengupdate tampilan dengan data yang baru.
+
+## Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+- Id selector; styling terhadap suatu elemen yang menggunakan Id reference yang unik
+- Tag selector, styling terhadap keseluruhan elemen tag
+- Class selector, melakukan styling secara universal
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
-1. Membuat suatu aplikasi baru bernama `todolist` dengan cara menjalankan perintah ini ke terminal
-    ```bash
-    python manage.py startapp todolist
-    ```
-
-2. Menambahkan aplikasi `todolist` ke **INSTALLED_APPS** pada `settings.py`
-    ```bash
-    INSTALLED_APPS = [
-        .....,
-        'todolist',
-        .....,
-    ]
-    ```
-
-3. Pada bagian file `models.py` yang berada pada folder `todolist`, buat modelsnya dengan fields
-- user
-- date
-- title
-- description
-- is_finished
-
-4. Jalankan perintah
-    ```bash
-    python manage.py makemingrations
-    python manage.py migrate
-    ```
-
-5. Pada bagian `views.py` yang berada `todolist` buatlah fungsi-fungsi yang dibutuhkan yang diantaraya adalah
-    ```python
-    def register_user(request):
-        .........
-
-    def login_user(request):
-        .........
-
-    def logout_user(request):
-        .........
-
-    @login_required(login_url='/todolist/login/')
-    def show_todos(request):
-        .........
-
-    @login_required(login_url='/todolist/login/')
-    def create_task(request, id):
-        .........
-
-    @login_required(login_url='/todolist/login/')
-    def update_task(request, id):
-        .........
-    ```
-
-6. Buat folder bernama `templates` di dalam folder `todolist` lalu tambahkan file html yang diperlukan ke dalam folder `templates`
-
-7. Pada folder `todolist` tambahkan file `urls.py` untuk melakukan roting ke fungsi yang ada pada file `views.py` dengan menambahkan variable **app_name** dengan  value 'todolist' serta membuat sebuah list yang menampung url patterns
-
-8. Terakhir, daftarkan `todolist` ke dalam `urls.py` yang ada pada folder `project_django` pada variabel **urlpatterns**
-    ```bash
-    urlpatterns = [
-        .........,
-        path('todolist/', include('todolist.urls')),
-        .........,
-    ]
-    ```
+1. Instalasi Django Tailwind dapat dilihat melalui [dokumentasi ini](https://django-tailwind.readthedocs.io/en/latest/installation.html)
+2. Styling dengan menggunakan tailwind ke masing-masing template yang digunakan todolist dengan memperhatikan aspek estetika dan responsivitas halaman
+3. Mengubah item pada todolist menjadi individual card 
 
 ## Link aplikasi
 Link untuk menuju aplikasi yang telah dikerjakan dapat diakses [di sini](https://pbp-tugas-2-angga.herokuapp.com/todolist/).
