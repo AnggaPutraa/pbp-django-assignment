@@ -6,7 +6,7 @@
         <form method="POST" action=""
             class="w-full mx-40 rounded p-8 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             {% csrf_token %}
-            <h1 class="text-center text-xl font-bold text-gray-900 dark:text-gray-300">Login</h1>
+            <h1 class="text-center text-xl font-bold text-gray-900 dark:text-gray-300">Create Task</h1>
             <div class="mt-4">
                 <label for="Title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Title</label>
             </div>
@@ -23,7 +23,7 @@
                 <button
                     class="btn submit_bt w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit" value="Submit">
-                    Submit
+                    Save
                 </button>
                 <a href="{% url 'todolist:show_todos' %}">
                     <button type="button" onclick=""
