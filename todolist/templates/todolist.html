@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <div>
-  <header class="sticky top-0 z-50">
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+  <!-- nav bar section -->
+  <header class=" sticky top-0 z-50">
+    <nav class="header drop-shadow-xl bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
         <h1 class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ username }} Todo's</h1>
         <div class="flex gap-4">
-          <a href="{% url 'todolist:create_task' %}">
-            <button type="button" onclick=""
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Create Task
-            </button>
-          </a>
+          <button type="button" id="create-task-btn"
+            class="show-modal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Create Task
+          </button>
           <a href="{% url 'todolist:logout' %}">
-            <button type="button" onclick=""
+            <button type="button"
               class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
               Logout
             </button>
@@ -23,11 +24,48 @@
       </div>
     </nav>
   </header>
+
   <main class=relative>
+    <!-- modal section -->
+    <div class="modal hidden absolute inset-0 h-screen bg-black bg-opacity-70" id="exampleModalCenter" tabindex="-1"
+      aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+      <div class="flex justify-center items-center w-screen h-screen">
+        <form method="POST" action=""
+          class="w-full mx-40 rounded p-8 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          {% csrf_token %}
+          <h1 class="text-center text-xl font-bold text-gray-900 dark:text-gray-300">Create Task</h1>
+          <div class="mt-4">
+            <label for="Title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Title</label>
+          </div>
+          <input id="title-controller" type="text" name="title" placeholder="Title" required
+            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <div class="mt-4">
+            <label for="description"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
+          </div>
+          <textarea id="descirption-controller" name="description" placeholder="Description" cols="30" rows="10"
+            class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required></textarea>
+          <div class="mt-6">
+            <button id="save-task"
+              class="btn submit_bt w-full mb-4 bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit" value="Submit" onclick="">
+              Save
+            </button>
+            <button type="button" onclick=""
+              class="close-modal only:mt-4 w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- todos card section -->
     <div class="flex items-stretch bg-gray-900 min-h-screen">
-      <div class="mx-10 md:mx-20 lg:mx-40 w-screenrounded-lg p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {% for todo in todos %}
+      <div class="mx-10 mt-4 md:mx-20 lg:mx-40 w-screenrounded-lg p-4">
+        <div id="todos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- {% for todo in todos %}
           <div
             class="flex flex-wrap flex-col p-4 md:p-2 lg:p-8 overflow-hidden  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ">
             <div class="flex-wrap justify-start items-start">
@@ -54,13 +92,118 @@
                 </button>
               </a>
             </div>
-
           </div>
-          {% endfor %}
+          {% endfor %} -->
         </div>
       </div>
     </div>
   </main>
 </div>
+
+<script>
+  const modal = document.querySelector('.modal');
+  const showModal = document.querySelector('.show-modal');
+  const closeModal = document.querySelector('.close-modal');
+  const header = document.querySelector('.header');
+
+  showModal.addEventListener(
+    'click',
+    function () {
+      var $body = $(document.body);
+      var oldWidth = $body.innerWidth();
+      $body.css("overflow", "hidden");
+      $body.width(oldWidth);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      modal.classList.remove('hidden');
+      header.classList.add('hidden');
+    })
+
+  closeModal.addEventListener(
+    'click',
+    function () {
+      var $body = $(document.body);
+      $body.css("overflow", "auto");
+      $body.width("auto");
+      modal.classList.add('hidden');
+      header.classList.remove('hidden');
+    })
+
+  function tonggleTodo(pk) {
+    $.post({
+      url: `update-task/${pk}/`,
+      type: 'post',
+      data: {},
+      success: loadTodos
+    })
+  }
+
+  function deleteTodo(pk) {
+    $.post({
+      url: `delete-task/${pk}/`,
+      type: 'post',
+      data: {},
+      success: loadTodos
+    })
+  }
+
+  function createTask() {
+    $.post({
+      url: `add/`,
+      type: 'post',
+      data: {
+        'title': $('#title-controller').val(),
+        'description': $('#descirption-controller').val()
+      },
+      success: loadTodos
+    })
+    closeModal.addEventListener(
+      'click',
+      function () {
+        modal.classList.add('hidden');
+      })
+  }
+  $(`#save-task`).attr('onclick', `createTask()`);
+
+  function loadTodos() {
+    $.get(
+      './json',
+      function (data) {
+        $('#todos-container').empty();
+        for (let i = 0; i < data.length; i++) {
+          $('#todos-container').append(
+            `<div
+            class="flex flex-wrap flex-col p-4 md:p-2 lg:p-8 overflow-hidden  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ">
+            <div class="flex-wrap justify-start items-start">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${data[i].fields.title}</h5>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${data[i].fields.date}</p>
+              <p id="todo-mark-${i}" class="mb-3 font-normal"></p>
+              <p class="mb-3 text-justify font-normal text-gray-700 dark:text-gray-400">${data[i].fields.description}</p>
+            </div>
+            <div class="flex flex-wrap mt-auto gap-21">
+              <button type="button" onclick="" id="toggle-button-${i}"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Toggle
+              </button>
+              <button type="button" onclick="" id="delete-button-${i}"
+                class="text-white ml-2 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                Delete
+              </button>
+            </div>
+          </div>`
+          )
+          if (data[i].fields.is_finished) {
+            $(`#todo-mark-${i}`).addClass('text-green-500').text('Done');
+          } else {
+            $(`#todo-mark-${i}`).addClass('text-red-600').text('In Progress');
+          }
+          $(`#toggle-button-${i}`).attr('onclick', `tonggleTodo(${data[i].pk})`);
+          $(`#delete-button-${i}`).attr('onclick', `deleteTodo(${data[i].pk})`)
+        }
+      })
+  }
+
+  loadTodos();
+</script>
 
 {% endblock content %}
