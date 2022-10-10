@@ -1,6 +1,6 @@
 
 
-# PBP Assignment 4 - Implementing Forms and Authentication Using Django
+# PBP Assignment 5 - Javascript and AJAX
 
 Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh 
 Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
@@ -11,29 +11,22 @@ Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 
 **Kelas : C**
 
-## Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
-1. Inline CSS diimplementasikan pada elemen HTML, yang mana pengguaannya cukup efisien apabila hanya melakukan styling satu atau dua elemen yang berbeda. Namun, penambahan styling pada html secara langsung membuat file html sulit untuk dibaca. 
-2. Internal CSS diimplementasikan secara internal di dalam file .html pada section `<style></style>`, namun terpisah dari tag HTML. Terdapat fitur yang tidak ada pada inline CSS seperti Id selector & class. Namun, implementasi tersebut akan memakan waktu yang cukup lama apabila terdapat banyak file .html
-3. External CSS diimplementasikan secara external di luar file .html yang biasanya diaplikasikan ke file .css yang nantinya akan di link ke file .html. Implementasi ini sangat berguna apabila bekerja pada website besar, di mana styling hanya cukup dilakukan di satu halaman untuk beberapa element/komponen yang sama. Namun, terkadang ada kemungkinan halaman .html tidak akan disajikan dengan baik sebelum external CSS sepenuhnya dimuat.
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+- Asynchronous programming memungkinkan pengguna untuk melakukan interaksi dengan website selagi server atau client side memproses data, sehingga sangat memungkinkan untuk menjalankan banyak proses secara bersamaan tanpa harus menunggu proses lain selesai.
+- Synchronous programming mengharuskan user untuk menunggu server dan client side memproses data terlebih dahulu sebelum berpindah ke suatu state, sehingga hanya terdapat satu proses yang dapat dieksekusi dalam satu waktu dengan memperhatikan urutan.
 
-## Jelaskan tag HTML5 yang kamu ketahui.
-1. `<h1></h1>` - `<h6></h6>`, untuk membuat heading
-2. `<p></p>`, untuk membuat element teks yang membentuk suatu paragraf
-3. `<img src=''/>`, untuk menambahkan/link gambar ke dalam project
-4. `<br></br>`, untuk memberi line break
-5. `<a><a/>`, untuk membuat suatu link yang dapat melakukan navigasi ke suatu route
-6. `<form></form>`, untuk membuat element form
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma Event-Driven Programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Event Driven Programming merupakan paradigma pemrograman di mana objek dapat berkomunikasi secara tidak langsung dengan mengirimkan pesan satu sama lain melalui perantara. Pengiriman pesan tersebut dilakukan melalui event stream. Paradigma ini bergantung pada event dengan memperhatikan operasi apa yang akan diimplementasikan dari adanya event. Penerapan paradigma dalam tugas ini terdapat pada implementasi tombol submit form penambahan task. Apabila tombol ditekan, maka akan terdapat event yang di trigger dan ditangani oleh AJAX sebagai perantara untuk mengirim data yang diisi dari form ke server, Selain itu, AJAX akan memperbarui data pada section Todo list secara asynchronous.
 
-
-## Jelaskan tipe-tipe CSS selector yang kamu ketahui.
-- Id selector; styling terhadap suatu elemen yang menggunakan Id reference yang unik
-- Tag selector, styling terhadap keseluruhan elemen tag
-- Class selector, melakukan styling secara universal
+## Jelaskan penerapan asynchronous programming pada AJAX.
+Membuat view serta url path baru yang mereturn sebuah response JSON. Implementasi asynchronous programming AJAX dalam tugas ini terdapat pada function get serta post untuk mengambil serta mengirim data JSON ke server, serta mengatur tampilan pada Todo list secara asynchronous sesuai data yang ada pada database
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
-1. Instalasi Django Tailwind dapat dilihat melalui [dokumentasi ini](https://django-tailwind.readthedocs.io/en/latest/installation.html)
-2. Styling dengan menggunakan tailwind ke masing-masing template yang digunakan todolist dengan memperhatikan aspek estetika dan responsivitas halaman
-3. Mengubah item pada todolist menjadi individual card 
+1. Membuat function baru yang mereturn response berupa JSON 
+2. Menambahkan attribute onClick pada button create task yang diintegrasikan dengan AJAX serta modals pop up
+3. Menambahkan beberapa function javascript untuk melakukan get dan post request ke server
+4. Memindahkan component card menjadi response dari post request AJAX dengan data pada card yang didapat dari get request.
+
 
 ## Link aplikasi
 Link untuk menuju aplikasi yang telah dikerjakan dapat diakses [di sini](https://pbp-tugas-2-angga.herokuapp.com/todolist/).
